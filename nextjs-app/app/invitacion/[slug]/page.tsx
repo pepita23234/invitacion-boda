@@ -21,6 +21,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = await params;
   const guest = await getGuest(slug);
+  const fbAppId = process.env.NEXT_PUBLIC_FB_APP_ID?.trim();
   const siteUrl = (
     process.env.NEXT_PUBLIC_SITE_URL ??
     "https://invitacion-boda-indol-mu.vercel.app"
@@ -63,6 +64,7 @@ export async function generateMetadata(
       images: [ogImageUrl],
     },
     other: {
+      ...(fbAppId ? { "fb:app_id": fbAppId } : {}),
       "twitter:domain": twitterDomain,
       "twitter:url": invitationUrl,
     },
