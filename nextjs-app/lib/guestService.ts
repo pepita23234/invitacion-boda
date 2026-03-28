@@ -1,11 +1,10 @@
 import slugify from "slugify";
-import { ResultSetHeader, RowDataPacket } from "mysql2";
 import { dbQuery } from "@/lib/db";
 
 export type InvitationType = "individual" | "pareja" | "cupos";
 export type RsvpType = "pending" | "confirmed" | "declined";
 
-interface GuestRow extends RowDataPacket {
+interface GuestRow {
   full_name: string;
   slug: string;
   invitation_type: InvitationType;
@@ -13,7 +12,7 @@ interface GuestRow extends RowDataPacket {
   seats: number;
   rsvp: RsvpType;
   attendees: number;
-  responded_at: string | null;
+  responded_at: string | Date | null;
 }
 
 export interface Guest {
@@ -66,7 +65,7 @@ function mapGuest(row?: GuestRow): Guest | null {
     seats: Number(row.seats || 1),
     rsvp: row.rsvp,
     attendees: Number(row.attendees || 0),
-    respondedAt: row.responded_at,
+    respondedAt: row.responded_at ? new Date(row.responded_at).toISOString() : null,
   };
 }
 
@@ -80,7 +79,7 @@ export function normalizeSlugInput(rawSlug: string) {
 
 export async function getGuestBySlug(rawSlug: string): Promise<Guest | null> {
   const slug = normalizeSlugInput(rawSlug);
-  const [rows] = (await dbQuery("SELECT * FROM guests WHERE slug = ? LIMIT 1", [slug])) as [GuestRow[], unknown];
+  const [rows] = (await dbQuery("SELECT * FROM guests WHERE slug = $1 LIMIT 1", [slug])) as [GuestRow[], unknown];
   return mapGuest(rows[0]);
 }
 
@@ -107,7 +106,7 @@ export async function saveRsvp(slug: string, response: "confirmed" | "declined",
   }
 
   await dbQuery(
-    "UPDATE guests SET rsvp = ?, attendees = ?, responded_at = NOW() WHERE slug = ?",
+    "UPDATE guests SET rsvp = $1, attendees = $2, responded_at = CURRENT_TIMESTAMP WHERE slug = $3",
     [nextRsvp, safeAttendees, guest.slug]
   );
 
@@ -120,17 +119,17 @@ export async function saveRsvp(slug: string, response: "confirmed" | "declined",
 }
 
 async function slugExists(slug: string) {
-  const [rows] = (await dbQuery("SELECT 1 FROM guests WHERE slug = ? LIMIT 1", [slug])) as [RowDataPacket[], unknown];
+  const [rows] = (await dbQuery("SELECT 1 FROM guests WHERE slug = $1 LIMIT 1", [slug])) as [GuestRow[], unknown];
   return rows.length > 0;
 }
 
 async function nameExists(fullName: string) {
-  const [rows] = (await dbQuery("SELECT 1 FROM guests WHERE full_name = ? LIMIT 1", [fullName])) as [RowDataPacket[], unknown];
+  const [rows] = (await dbQuery("SELECT 1 FROM guests WHERE full_name = $1 LIMIT 1", [fullName])) as [GuestRow[], unknown];
   return rows.length > 0;
 }
 
 async function nameExistsExceptSlug(fullName: string, slug: string) {
-  const [rows] = (await dbQuery("SELECT 1 FROM guests WHERE full_name = ? AND slug <> ? LIMIT 1", [fullName, slug])) as [RowDataPacket[], unknown];
+  const [rows] = (await dbQuery("SELECT 1 FROM guests WHERE full_name = $1 AND slug <> $2 LIMIT 1", [fullName, slug])) as [GuestRow[], unknown];
   return rows.length > 0;
 }
 
@@ -209,7 +208,7 @@ export async function createGuest(payload: GuestPayload): Promise<GuestMutationR
   await dbQuery(
     `INSERT INTO guests
       (full_name, slug, invitation_type, partner_name, seats, rsvp, attendees, responded_at)
-      VALUES (?, ?, ?, ?, ?, 'pending', 0, NULL)`,
+      VALUES ($1, $2, $3, $4, $5, 'pending', 0, NULL)`,
     [invitationData.fullName, slug, invitationData.invitationType, invitationData.partnerName, invitationData.seats]
   );
 
@@ -243,8 +242,8 @@ export async function updateGuest(rawSlug: string, payload: GuestPayload): Promi
 
   await dbQuery(
     `UPDATE guests
-      SET full_name = ?, invitation_type = ?, partner_name = ?, seats = ?, attendees = ?, rsvp = ?, responded_at = ?, updated_at = NOW()
-      WHERE slug = ?`,
+      SET full_name = $1, invitation_type = $2, partner_name = $3, seats = $4, attendees = $5, rsvp = $6, responded_at = $7, updated_at = CURRENT_TIMESTAMP
+      WHERE slug = $8`,
     [
       invitationData.fullName,
       invitationData.invitationType,
@@ -267,8 +266,8 @@ export async function updateGuest(rawSlug: string, payload: GuestPayload): Promi
 
 export async function deleteGuest(rawSlug: string) {
   const slug = normalizeSlugInput(rawSlug);
-  const [result] = (await dbQuery("DELETE FROM guests WHERE slug = ?", [slug])) as [ResultSetHeader, unknown];
-  return result.affectedRows > 0;
+  const [, result] = (await dbQuery("DELETE FROM guests WHERE slug = $1", [slug])) as [unknown[], { rowCount?: number }];
+  return Number(result?.rowCount || 0) > 0;
 }
 
 export function toGuestSlug(fullName: string) {
