@@ -7,7 +7,7 @@ export const Gallery: React.FC = () => {
       <h2>Compartimos este día junto a ti</h2>
       <div className={styles.ornamentalLine}></div>
       <div className={styles.socialCard}>
-        <p>Comparti tus fotos y videos de ese hermoso dia</p>
+        <p>Comparte tus fotos y videos de ese hermoso dia</p>
         <a
           className={styles.hashtag}
           href="https://www.instagram.com/explore/tags/Johan%26Mayra/"

@@ -120,7 +120,7 @@ export default async function InvitationPage({ params }: InvitationPageProps) {
               </article>
               <article>
                 <h3>Lugar</h3>
-                <p>Cabañas Villa Gladys</p>
+                <p>Cabaña Villa Gladys</p>
               </article>
               <article>
                 <h3>Dress Code</h3>
