@@ -21,6 +21,10 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { slug } = await params;
   const guest = await getGuest(slug);
+  const siteUrl = (
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    "https://invitacion-boda-indol-mu.vercel.app"
+  ).replace(/\/$/, "");
 
   if (!guest) {
     return {
@@ -28,16 +32,24 @@ export async function generateMetadata(
     };
   }
 
+  const invitationUrl = `${siteUrl}/invitacion/${guest.slug}`;
+  const ogImageUrl = `${siteUrl}/og-cover.jpg`;
+  const twitterDomain = new URL(siteUrl).hostname;
+
   return {
     title: `Invitación de Boda | ${guest.fullName}`,
     description: "Te invitamos a celebrar nuestro matrimonio.",
+    alternates: {
+      canonical: invitationUrl,
+    },
     openGraph: {
+      url: invitationUrl,
       title: `Invitación de Boda | ${guest.fullName}`,
       description: "Te invitamos a celebrar nuestro matrimonio.",
       type: "website",
       images: [
         {
-          url: "/og-cover.jpg",
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: "Invitación de Boda Johan & Mayra",
@@ -48,7 +60,11 @@ export async function generateMetadata(
       card: "summary_large_image",
       title: `Invitación de Boda | ${guest.fullName}`,
       description: "Te invitamos a celebrar nuestro matrimonio.",
-      images: ["/og-cover.jpg"],
+      images: [ogImageUrl],
+    },
+    other: {
+      "twitter:domain": twitterDomain,
+      "twitter:url": invitationUrl,
     },
   };
 }
