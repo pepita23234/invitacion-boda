@@ -38,8 +38,8 @@ export async function generateMetadata(
       images: [
         {
           url: "/og-cover.jpg",
-          width: 1280,
-          height: 720,
+          width: 1200,
+          height: 630,
           alt: "Invitación de Boda Johan & Mayra",
         },
       ],
