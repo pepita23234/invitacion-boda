@@ -1,0 +1,45 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 1600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+      circle at 50% 22%,
+      rgba(255, 255, 255, 0.88),
+      rgba(255, 255, 255, 0) 55%
+    ),
+    linear-gradient(148deg, #faf5ea 0%, #efe5d2 54%, #e5d1b1 100%);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.spinner {
+  width: clamp(64px, 18vw, 92px);
+  height: clamp(64px, 18vw, 92px);
+  border-radius: 50%;
+  border: 4px solid rgba(95, 115, 86, 0.25);
+  border-top-color: #5f7356;
+  animation: spin 0.9s linear infinite;
+  box-shadow: 0 8px 16px rgba(52, 66, 52, 0.15);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}

@@ -1,0 +1,593 @@
+/* ============================================================
+   INVITATION PAGE — Minimalist Tropical Wedding
+   ============================================================ */
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #FDFAF4 0%, #F5EDD9 52%, #EDE0C8 100%);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Subtle warm dot texture */
+.container::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.13;
+  background-image: radial-gradient(circle, #7A9E7A 1px, transparent 1px);
+  background-size: 38px 38px;
+}
+
+/* === Main shell === */
+.shell {
+  position: relative;
+  z-index: 1;
+  width: min(900px, 90vw);
+  margin: 2.5rem auto 3.5rem;
+  display: grid;
+  gap: 1.4rem;
+}
+
+/* === Section cards === */
+.shell > section {
+  background: rgba(255, 253, 248, 0.97);
+  border: 1px solid rgba(90, 124, 90, 0.13);
+  border-radius: 24px;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.85) inset,
+    0 24px 52px -16px rgba(36, 52, 36, 0.09);
+  padding: clamp(1.6rem, 3.5vw, 2.6rem);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gloss overlay */
+.shell > section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* === Section headings === */
+.details h2,
+.rsvp h2 {
+  margin: 0 0 0.3rem;
+  text-align: center;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  color: #2D4A3E;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+.details h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  color: #7FA280;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.details p,
+.rsvp p {
+  color: #4A4039;
+  font-size: 0.96rem;
+}
+
+/* === Ornamental divider === */
+.ornamentalLine {
+  width: min(200px, 60%);
+  height: 20px;
+  margin: 0.5rem auto 1.4rem;
+  position: relative;
+}
+
+.ornamentalLine::before,
+.ornamentalLine::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  width: 44%;
+  height: 1px;
+}
+
+.ornamentalLine::before {
+  left: 0;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 96, 0.6));
+}
+
+.ornamentalLine::after {
+  right: 0;
+  background: linear-gradient(90deg, rgba(197, 160, 96, 0.6), transparent);
+}
+
+.ornamentalLine {
+  background:
+    radial-gradient(circle at center, rgba(197, 160, 96, 0.95) 0 3px, transparent 4px),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 0 6px, transparent 7px);
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: lineGlow 5s ease-in-out infinite;
+}
+
+/* === Detail cards grid === */
+.detailCards {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 1.4rem;
+}
+
+.detailCards article:last-child {
+  grid-column: 1 / -1;
+}
+
+.detailCards article {
+  background: linear-gradient(155deg, rgba(253, 250, 244, 0.96), rgba(240, 228, 206, 0.88));
+  border: 1px solid rgba(90, 120, 90, 0.11);
+  border-radius: 16px;
+  padding: 1.15rem 0.75rem 1rem;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+.detailCards article:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 14px 30px -10px rgba(36, 52, 36, 0.13);
+}
+
+/* Card value (p tag) */
+.detailCards article p {
+  margin: 0;
+  color: #2D4A3E;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* === Map button === */
+.mapBtn {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  text-decoration: none;
+  background: linear-gradient(135deg, #4E7260 0%, #2D4A3E 100%);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 28px -8px rgba(36, 74, 54, 0.38);
+}
+
+.mapBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -8px rgba(36, 74, 54, 0.46);
+}
+
+/* === RSVP section === */
+.rsvp {
+  text-align: center;
+}
+
+.rsvp p {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: #554b43;
+}
+
+/* === Keyframes === */
+@keyframes lineGlow {
+  0%, 100% { filter: saturate(1); }
+  50% { filter: saturate(1.4); }
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .detailCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .detailCards article:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .shell {
+    width: min(900px, 94vw);
+    margin: 1.5rem auto 2rem;
+    gap: 1rem;
+  }
+
+  .shell > section {
+    padding: 1.25rem;
+    border-radius: 18px;
+  }
+
+  .detailCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .detailCards article:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ornamentalLine {
+    animation: none;
+  }
+
+  .detailCards article {
+    transition: none;
+  }
+}
+
+.container::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.34;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='360' viewBox='0 0 520 360'%3E%3Cg fill='none' stroke='%23b89b6d' stroke-width='9' stroke-opacity='0.5'%3E%3Ccircle cx='230' cy='185' r='84'/%3E%3Ccircle cx='292' cy='185' r='84'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='300' viewBox='0 0 440 300'%3E%3Cg fill='none' stroke='%2392a487' stroke-width='7' stroke-opacity='0.36'%3E%3Ccircle cx='190' cy='150' r='70'/%3E%3Ccircle cx='244' cy='150' r='70'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 4% bottom 6%, left 4% top 14%;
+  background-size: min(48vw, 500px), min(38vw, 390px);
+  animation: ringsFloat 10s ease-in-out infinite;
+}
+
+.container::after {
+  content: "";
+  position: fixed;
+  inset: -18% -12%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.56;
+  background:
+    radial-gradient(11px 18px at 8% 90%, rgba(95, 115, 86, 0.3), transparent 76%),
+    radial-gradient(9px 16px at 20% 105%, rgba(95, 115, 86, 0.24), transparent 76%),
+    radial-gradient(12px 18px at 34% 92%, rgba(175, 143, 98, 0.26), transparent 76%),
+    radial-gradient(10px 16px at 48% 106%, rgba(95, 115, 86, 0.28), transparent 76%),
+    radial-gradient(11px 17px at 62% 94%, rgba(175, 143, 98, 0.24), transparent 76%),
+    radial-gradient(9px 15px at 78% 108%, rgba(95, 115, 86, 0.28), transparent 76%),
+    radial-gradient(12px 18px at 90% 96%, rgba(95, 115, 86, 0.25), transparent 76%);
+  animation: leafStream 14s linear infinite;
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+  width: min(980px, 92vw);
+  margin: 2rem auto;
+  display: grid;
+  gap: 1.15rem;
+}
+
+.shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.36;
+  background:
+    radial-gradient(10px 16px at 6% 94%, rgba(95, 115, 86, 0.23), transparent 75%),
+    radial-gradient(10px 15px at 18% 96%, rgba(95, 115, 86, 0.2), transparent 75%),
+    radial-gradient(9px 14px at 28% 99%, rgba(175, 143, 98, 0.22), transparent 75%),
+    radial-gradient(11px 17px at 40% 95%, rgba(95, 115, 86, 0.2), transparent 75%),
+    radial-gradient(10px 16px at 53% 97%, rgba(175, 143, 98, 0.22), transparent 75%),
+    radial-gradient(9px 15px at 64% 100%, rgba(95, 115, 86, 0.2), transparent 75%),
+    radial-gradient(11px 17px at 74% 96%, rgba(175, 143, 98, 0.23), transparent 75%),
+    radial-gradient(10px 16px at 86% 98%, rgba(95, 115, 86, 0.2), transparent 75%),
+    radial-gradient(9px 14px at 96% 101%, rgba(95, 115, 86, 0.23), transparent 75%);
+  animation: leafRise 12s linear infinite;
+}
+
+.shell > section {
+  background: rgba(255, 254, 251, 0.92);
+  border: 1px solid rgba(110, 127, 98, 0.25);
+  border-radius: 28px;
+  box-shadow: 0 18px 36px rgba(52, 66, 52, 0.12);
+  padding: clamp(1.2rem, 3vw, 2.2rem);
+  position: relative;
+  overflow: hidden;
+  animation: sectionRise 0.75s ease both;
+}
+
+.shell > section:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.shell > section:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.shell > section:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.shell > section:nth-child(odd) {
+  animation-name: sectionRise, sectionBreath;
+  animation-duration: 0.75s, 9s;
+  animation-delay: 0s, 0.75s;
+  animation-timing-function: ease, ease-in-out;
+  animation-fill-mode: both, both;
+  animation-iteration-count: 1, infinite;
+}
+
+.shell > section:nth-child(even) {
+  animation-name: sectionRise, sectionBreathAlt;
+  animation-duration: 0.75s, 11s;
+  animation-delay: 0s, 0.75s;
+  animation-timing-function: ease, ease-in-out;
+  animation-fill-mode: both, both;
+  animation-iteration-count: 1, infinite;
+}
+
+.shell > section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0));
+}
+
+.details h2,
+.rsvp h2 {
+  margin: 0 0 0.8rem;
+  text-align: center;
+  font-size: clamp(1.9rem, 4vw, 2.5rem);
+  color: #2f4033;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.details h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.35rem;
+  color: #2f4033;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.details p,
+.rsvp p {
+  color: #554b43;
+}
+
+.ornamentalLine {
+  width: min(220px, 72%);
+  margin: 0.7rem auto 0.95rem;
+  height: 16px;
+  position: relative;
+}
+
+.ornamentalLine::before,
+.ornamentalLine::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  width: 44%;
+  border-top: 1px solid rgba(95, 115, 86, 0.45);
+}
+
+.ornamentalLine::before {
+  left: 0;
+}
+
+.ornamentalLine::after {
+  right: 0;
+}
+
+.ornamentalLine {
+  background: radial-gradient(
+      circle at center,
+      rgba(175, 143, 98, 0.9) 0 3px,
+      transparent 4px
+    ),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.85) 0 6px, transparent 7px);
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: lineGlow 5s ease-in-out infinite;
+}
+
+.detailCards {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 1rem;
+}
+
+.detailCards article {
+  background: var(--beige-soft);
+  border: 1px solid rgba(110, 127, 98, 0.2);
+  border-radius: 14px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.detailCards p {
+  margin: 0;
+  font-weight: 600;
+  color: #5b6d52;
+}
+
+.mapBtn {
+  margin: 0 auto;
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+  background: #5f7356;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.15rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-weight: 600;
+}
+
+.mapBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(47, 64, 51, 0.2);
+}
+
+@keyframes sectionRise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sectionBreath {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes sectionBreathAlt {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(2px);
+  }
+}
+
+@keyframes ringsFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: translate3d(-14px, -16px, 0) rotate(-2deg) scale(1.025);
+  }
+}
+
+@keyframes tropicalDrift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(-1.6%, 1.6%, 0) rotate(0.6deg);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+@keyframes leafStream {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  100% {
+    transform: translate3d(0, -48%, 0) rotate(8deg);
+  }
+}
+
+@keyframes leafRise {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, -46%, 0);
+  }
+}
+
+@keyframes lineGlow {
+  0%,
+  100% {
+    filter: saturate(1);
+  }
+
+  50% {
+    filter: saturate(1.2);
+  }
+}
+
+.rsvp {
+  text-align: center;
+}
+
+.rsvp p {
+  margin: 0 0 0.8rem;
+}
+
+@media (max-width: 840px) {
+  .detailCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .shell {
+    width: min(980px, 95vw);
+    margin: 1.1rem auto;
+    gap: 0.8rem;
+  }
+
+  .shell > section {
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .shell > section {
+    box-shadow: 0 10px 20px rgba(52, 66, 52, 0.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container::before,
+  .container::after,
+  .shell::before,
+  .shell::after,
+  .ornamentalLine,
+  .shell,
+  .shell > section {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin | Invitaciones Boda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <main class="admin-shell">
+    <section class="hero-card">
+      <div>
+        <h1>Panel de Invitados</h1>
+        <p>Crea enlaces unicos para cada persona y gestiona su RSVP.</p>
+      </div>
+      <button id="openCreateModalBtn" class="cta-btn" type="button">Nuevo invitado</button>
+    </section>
+
+    <section class="stats-grid" aria-label="Resumen de asistentes">
+      <article class="stat-card">
+        <p>Total invitaciones</p>
+        <strong id="statInvitations">0</strong>
+      </article>
+      <article class="stat-card">
+        <p>Total personas invitadas</p>
+        <strong id="statSeats">0</strong>
+      </article>
+      <article class="stat-card">
+        <p>Personas que asistiran</p>
+        <strong id="statConfirmed">0</strong>
+      </article>
+      <article class="stat-card">
+        <p>Personas que no asistiran</p>
+        <strong id="statDeclined">0</strong>
+      </article>
+      <article class="stat-card">
+        <p>Personas pendientes</p>
+        <strong id="statPending">0</strong>
+      </article>
+    </section>
+
+    <section class="list-card">
+      <div class="list-header">
+        <h2>Invitados registrados</h2>
+        <div class="toolbar-actions">
+          <input id="searchInput" type="search" placeholder="Buscar por nombre o slug" aria-label="Buscar invitados" />
+          <select id="statusFilter" aria-label="Filtrar por estado RSVP">
+            <option value="all">Todos los estados</option>
+            <option value="pending">Pendiente</option>
+            <option value="confirmed">Confirmado</option>
+            <option value="declined">No asistira</option>
+          </select>
+          <button id="reloadBtn" type="button">Actualizar</button>
+        </div>
+      </div>
+      <p id="feedback" class="feedback" role="status"></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>Cupos</th>
+              <th>URL</th>
+              <th>RSVP</th>
+              <th>Asistentes</th>
+              <th>QR</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="guestRows"></tbody>
+        </table>
+      </div>
+      <div class="pagination-bar">
+        <p id="paginationInfo">Mostrando 0 de 0</p>
+        <div class="pagination-actions">
+          <button id="prevPageBtn" type="button">Anterior</button>
+          <span id="pageIndicator">Pagina 1</span>
+          <button id="nextPageBtn" type="button">Siguiente</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="guestModal" class="guest-modal">
+    <form id="guestForm" class="guest-form" method="dialog">
+      <div class="modal-header">
+        <h2 id="guestModalTitle">Agregar invitado</h2>
+        <button id="closeModalBtn" type="button" class="ghost-icon" aria-label="Cerrar">x</button>
+      </div>
+
+      <label for="fullName">Nombre completo</label>
+      <input id="fullName" name="fullName" type="text" placeholder="Ej. Juan Perez" required />
+
+      <label for="invitationType">Tipo de invitacion</label>
+      <select id="invitationType" name="invitationType">
+        <option value="individual">Individual</option>
+        <option value="pareja">Pareja</option>
+        <option value="cupos">Por cupos</option>
+      </select>
+
+      <div id="partnerField" class="conditional-field hidden">
+        <label for="partnerName">Segundo nombre (pareja)</label>
+        <input id="partnerName" name="partnerName" type="text" placeholder="Ej. Maria Lopez" />
+      </div>
+
+      <div id="seatsField" class="conditional-field hidden">
+        <label for="seats">Numero de cupos</label>
+        <input id="seats" name="seats" type="number" min="1" max="20" value="2" />
+      </div>
+
+      <div class="modal-actions">
+        <button id="saveGuestBtn" type="submit">Guardar invitado</button>
+        <button id="cancelModalBtn" type="button" class="secondary-action">Cancelar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="linkModal" class="guest-modal link-modal">
+    <div class="link-modal-content">
+      <div class="modal-header">
+        <h2>Invitacion creada</h2>
+        <button id="closeLinkModalBtn" type="button" class="ghost-icon" aria-label="Cerrar">x</button>
+      </div>
+      <p>Comparte este enlace con tu invitado.</p>
+      <input id="createdInvitationLink" type="text" readonly />
+      <div class="modal-actions">
+        <button id="shareLinkBtn" type="button">Compartir</button>
+        <button id="copyLinkBtn" type="button" class="secondary-action">Copiar link</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

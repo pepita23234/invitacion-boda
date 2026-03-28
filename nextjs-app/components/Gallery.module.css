@@ -1,0 +1,259 @@
+.gallery {
+  text-align: center;
+  background: rgba(255, 253, 248, 0.97);
+  border: 1px solid rgba(90, 124, 90, 0.13);
+  border-radius: 24px;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.85) inset,
+    0 24px 52px -16px rgba(36, 52, 36, 0.09);
+  padding: clamp(1.6rem, 3.5vw, 2.6rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.gallery h2 {
+  margin: 0 0 0.3rem;
+  text-align: center;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  color: #2D4A3E;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.ornamentalLine {
+  width: min(200px, 60%);
+  height: 20px;
+  margin: 0.5rem auto 1.4rem;
+  position: relative;
+  background:
+    radial-gradient(circle at center, rgba(197, 160, 96, 0.95) 0 3px, transparent 4px),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 0 6px, transparent 7px);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.ornamentalLine::before,
+.ornamentalLine::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  width: 44%;
+  height: 1px;
+}
+
+.ornamentalLine::before {
+  left: 0;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 96, 0.6));
+}
+
+.ornamentalLine::after {
+  right: 0;
+  background: linear-gradient(90deg, rgba(197, 160, 96, 0.6), transparent);
+}
+
+.socialCard {
+  width: min(680px, 100%);
+  margin: 0 auto;
+  padding: 1.5rem 1.4rem;
+  border-radius: 20px;
+  border: 1px solid rgba(90, 120, 90, 0.12);
+  background: linear-gradient(145deg, rgba(253, 250, 244, 0.96), rgba(240, 228, 208, 0.9));
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.88) inset,
+    0 20px 40px -20px rgba(36, 52, 36, 0.14);
+  display: grid;
+  gap: 0.9rem;
+}
+
+.socialCard p {
+  margin: 0;
+  color: #554B43;
+  font-size: 0.97rem;
+}
+
+.hashtag {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.9rem, 5.8vw, 3rem);
+  color: #2D4A3E;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hashtag:hover {
+  color: #C5A060;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.instagramBtn {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.78rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid rgba(90, 120, 90, 0.28);
+  color: #2D4A3E;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  background: rgba(255, 255, 255, 0.78);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  letter-spacing: 0.03em;
+}
+
+.instagramBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -12px rgba(36, 52, 36, 0.4);
+}
+
+.instagramPeople {
+  margin-top: 0.15rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.instagramPeople a {
+  color: #5E7E5A;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: color 0.2s ease;
+}
+
+.instagramPeople a:hover {
+  color: #2D4A3E;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.ornamentalLine {
+  width: min(220px, 72%);
+  margin: 0.7rem auto 1rem;
+  height: 16px;
+  position: relative;
+  background: radial-gradient(
+      circle at center,
+      rgba(175, 143, 98, 0.9) 0 3px,
+      transparent 4px
+    ),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.85) 0 6px, transparent 7px);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.ornamentalLine::before,
+.ornamentalLine::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  width: 44%;
+  border-top: 1px solid rgba(95, 115, 86, 0.45);
+}
+
+.ornamentalLine::before {
+  left: 0;
+}
+
+.ornamentalLine::after {
+  right: 0;
+}
+
+.socialCard {
+  width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 1.35rem 1.2rem;
+  border-radius: 18px;
+  border: 1px solid rgba(95, 115, 86, 0.22);
+  background: linear-gradient(140deg, rgba(255, 252, 246, 0.94), rgba(243, 233, 217, 0.9));
+  box-shadow: 0 18px 36px -24px rgba(47, 64, 51, 0.5);
+  display: grid;
+  gap: 0.75rem;
+}
+
+.socialCard p {
+  margin: 0;
+  color: #4f4740;
+  font-size: 1.02rem;
+}
+
+.hashtag {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+  color: #2f4033;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.hashtag:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.instagramBtn {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.72rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(95, 115, 86, 0.35);
+  color: #2f4033;
+  text-decoration: none;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.75);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.instagramBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px -14px rgba(47, 64, 51, 0.45);
+}
+
+.instagramPeople {
+  margin-top: 0.2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.instagramPeople a {
+  text-decoration: none;
+  color: #415a49;
+  font-weight: 700;
+  font-size: 0.94rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(95, 115, 86, 0.25);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.instagramPeople a:hover {
+  background: #ffffff;
+}
+
+@media (max-width: 840px) {
+  .socialCard {
+    padding: 1.1rem 1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .socialCard p {
+    font-size: 0.96rem;
+  }
+}

@@ -1,0 +1,137 @@
+﻿.card {
+  width: min(520px, 100%);
+  padding: 3rem 2.4rem 2.6rem;
+  border-radius: 28px;
+  border: 1px solid rgba(90, 124, 90, 0.18);
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 252, 246, 0.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 0 rgba(255,255,255,0.9) inset,
+              0 32px 64px -24px rgba(36, 52, 36, 0.18);
+  position: relative;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-color: rgba(197, 160, 96, 0.38);
+  border-style: solid;
+}
+
+.card::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1.5px 0 0 1.5px;
+  border-radius: 28px 0 0 0;
+}
+
+.card::after {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 1.5px 1.5px 0;
+  border-radius: 0 0 28px 0;
+}
+
+.eyebrow {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9A876A;
+}
+
+.title {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-cormorant), "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: #2D4A3E;
+}
+
+.names {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4E7260;
+}
+
+.divider {
+  width: 72px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197,160,96,0.75), transparent);
+}
+
+.hint {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.94rem;
+  font-style: italic;
+  color: #6A5D52;
+  line-height: 1.6;
+}
+
+.actions {
+  width: 100%;
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.actions button {
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 0.95rem 1rem;
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #5E8A6A 0%, #2D4A3E 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 24px -8px rgba(36,74,54,0.4);
+}
+
+.actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -8px rgba(36,74,54,0.48);
+}
+
+.actions .secondary {
+  background: rgba(240, 232, 216, 0.92);
+  color: #3E332A;
+  border: 1px solid rgba(90, 124, 90, 0.14);
+  box-shadow: 0 4px 14px -6px rgba(36,32,28,0.16);
+}
+
+.actions .secondary:hover {
+  background: rgba(228, 218, 200, 1);
+  box-shadow: 0 8px 20px -6px rgba(36,32,28,0.22);
+}
+
+@media (max-width: 540px) {
+  .card {
+    padding: 2.2rem 1.4rem 2rem;
+  }
+}

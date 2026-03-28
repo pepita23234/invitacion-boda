@@ -1,0 +1,269 @@
+/* ============================================================
+   HERO — Minimalist Tropical Wedding
+   ============================================================ */
+
+.hero {
+  text-align: center;
+  padding: 0.5rem 0 0.3rem;
+  position: relative;
+}
+
+/* --- Staggered entrance animations --- */
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: #7FA280;
+  font-weight: 600;
+  animation: fadeSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+.mainTitle {
+  margin: 0.55rem 0 0;
+  letter-spacing: 0.3em;
+  font-size: clamp(0.78rem, 2.1vw, 0.92rem);
+  color: #9A876A;
+  font-weight: 600;
+  animation: fadeSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.coupleNames {
+  margin: 0.55rem 0 0;
+  font-size: clamp(2.3rem, 6.8vw, 4.6rem);
+  line-height: 1.04;
+  color: #2D4A3E;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  animation: fadeSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.coupleNames span {
+  color: #C5A060;
+  font-style: italic;
+}
+
+/* --- Gold ornamental divider --- */
+.ornamentalLine {
+  width: min(240px, 72%);
+  margin: 1rem auto 1.1rem;
+  height: 20px;
+  position: relative;
+  animation: fadeIn 1s ease 0.44s both, lineGlow 5s ease-in-out 1.4s infinite;
+}
+
+.ornamentalLine::before,
+.ornamentalLine::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  width: 44%;
+  height: 1px;
+}
+
+.ornamentalLine::before {
+  left: 0;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 96, 0.65));
+}
+
+.ornamentalLine::after {
+  right: 0;
+  background: linear-gradient(90deg, rgba(197, 160, 96, 0.65), transparent);
+}
+
+.ornamentalLine {
+  background:
+    radial-gradient(circle at center, rgba(197, 160, 96, 0.95) 0 3px, transparent 4px),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 0 6px, transparent 7px);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@keyframes lineGlow {
+  0%, 100% { filter: saturate(1); }
+  50% { filter: saturate(1.6) brightness(1.08); }
+}
+
+/* --- Guest card --- */
+.invitedCard {
+  margin: 0 auto;
+  width: min(580px, 100%);
+  padding: 1.05rem 1.5rem;
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255, 252, 246, 0.97), rgba(242, 232, 212, 0.92));
+  border: 1px solid rgba(90, 130, 90, 0.15);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.9) inset,
+    0 18px 40px -14px rgba(36, 52, 36, 0.13);
+  animation: fadeSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.invitedTitle {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #5E7E5A;
+  font-size: 0.72rem;
+}
+
+.invitedNames {
+  margin: 0.38rem 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.35rem, 3.6vw, 1.9rem);
+  color: #2D4A3E;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.inviteMeta {
+  margin: 0.5rem 0 0;
+  color: #5A6E50;
+  font-weight: 600;
+  font-size: 0.86rem;
+  animation: fadeSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.58s both;
+}
+
+/* --- Quote --- */
+.romanticCopy {
+  max-width: 580px;
+  margin: 1rem auto 1.2rem;
+  line-height: 1.78;
+  padding-inline: clamp(0.3rem, 2vw, 1.5rem);
+  font-style: italic;
+  color: #7A6958;
+  font-size: 0.94rem;
+  animation: fadeSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+/* --- Countdown --- */
+.countdownShell {
+  width: min(720px, 100%);
+  margin: 1.1rem auto 0;
+  padding: 1.25rem 1.1rem 1.1rem;
+  border-radius: 20px;
+  border: 1px solid rgba(90, 120, 90, 0.13);
+  background: linear-gradient(140deg, rgba(253, 250, 244, 0.96), rgba(240, 230, 212, 0.9));
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.88) inset,
+    0 22px 44px -18px rgba(36, 52, 36, 0.17);
+  display: grid;
+  gap: 0.7rem;
+  animation: fadeSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.74s both;
+}
+
+.labelTop {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #9A876A;
+}
+
+.countdownGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.timeCard {
+  border-radius: 14px;
+  padding: 0.8rem 0.4rem 0.7rem;
+  border: 1px solid rgba(90, 120, 90, 0.11);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.95) inset;
+  display: grid;
+  gap: 0.05rem;
+  justify-items: center;
+  transition: transform 0.22s ease;
+}
+
+.timeCard:hover {
+  transform: translateY(-3px);
+}
+
+.number {
+  font-size: clamp(1.8rem, 5.2vw, 2.7rem);
+  font-weight: 600;
+  color: #2D4A3E;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.unit {
+  color: #9A876A;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.labelBottom {
+  margin: 0;
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #8A7860;
+}
+
+/* === Keyframes === */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* === Responsive === */
+@media (max-width: 560px) {
+  .hero {
+    padding: 0.2rem 0 0;
+  }
+
+  .coupleNames {
+    font-size: clamp(2.1rem, 9vw, 3.2rem);
+  }
+
+  .romanticCopy {
+    line-height: 1.65;
+    font-size: 0.9rem;
+  }
+
+  .countdownShell {
+    padding: 1rem;
+  }
+
+  .countdownGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow,
+  .mainTitle,
+  .coupleNames,
+  .ornamentalLine,
+  .invitedCard,
+  .inviteMeta,
+  .romanticCopy,
+  .countdownShell {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
