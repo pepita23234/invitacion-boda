@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import styles from "./GiftsSection.module.css";
 
-type ModalType = "cuenta" | "lista" | null;
+type ModalType = "cuenta" | null;
 
 export function GiftsSection() {
   const [open, setOpen] = useState<ModalType>(null);
@@ -47,35 +47,38 @@ export function GiftsSection() {
               ×
             </button>
 
-            <div className={styles.modalIcon}>🎁</div>
-            <h3 id="modal-title" className={styles.modalTitle}>Regalos</h3>
+            <h3 id="modal-title" className={styles.modalTitle}>Lluvias de Sobres</h3>
             <div className={styles.modalDivider} />
 
             {open === "cuenta" && (
               <div className={styles.modalBody}>
+                <p className={styles.modalHint}>
+                  Aquí puedes enviarme tus lluvias de sobres
+                </p>
+
                 <p className={styles.modalLabel}>Cuenta Nequi</p>
                 <div className={styles.accountBox}>
-                  <span className={styles.accountNumber}>310 531 3941</span>
+                  <span className={styles.accountNumber}>300 839 9854</span>
                   <button
                     className={styles.copyBtn}
-                    onClick={() => navigator.clipboard?.writeText("3105313941")}
+                    onClick={() => navigator.clipboard?.writeText("3008399854")}
                     aria-label="Copiar número"
                   >
                     Copiar
                   </button>
                 </div>
-                <p className={styles.modalHint}>
-                  Transferencia directa por Nequi a este número.
-                </p>
-              </div>
-            )}
 
-            {open === "lista" && (
-              <div className={styles.modalBody}>
-                <p className={styles.modalLabel}>Lista de Regalos</p>
-                <p className={styles.modalHint}>
-                  Próximamente compartiremos nuestra lista de regalos. ¡Gracias por tu amor!
-                </p>
+                <p className={styles.modalLabel}>Llave Nequi</p>
+                <div className={styles.accountBox}>
+                  <span className={styles.accountNumber}>114 316 6920</span>
+                  <button
+                    className={styles.copyBtn}
+                    onClick={() => navigator.clipboard?.writeText("1143166920")}
+                    aria-label="Copiar llave"
+                  >
+                    Copiar
+                  </button>
+                </div>
               </div>
             )}
           </div>
@@ -87,18 +90,15 @@ export function GiftsSection() {
   return (
     <>
       <section className={styles.gifts} data-reveal>
-        <div className={styles.giftIcon}>🎁</div>
-        <h2 className={styles.title}>Regalos</h2>
+        <div className={styles.giftIcon}></div>
+        <h2 className={styles.title}>Lluvias de Sobres</h2>
         <div className={styles.ornamentalLine} />
         <p className={styles.subtitle}>
           Si deseas regalarnos algo más que tu hermosa presencia…
         </p>
         <div className={styles.buttons}>
           <button className={styles.btn} onClick={() => setOpen("cuenta")}>
-            Cuenta Bancaria
-          </button>
-          <button className={`${styles.btn} ${styles.btnOutline}`} onClick={() => setOpen("lista")}>
-            Lista de Regalos
+            Ver Cuentas
           </button>
         </div>
       </section>
