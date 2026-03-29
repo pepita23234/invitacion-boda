@@ -5,6 +5,7 @@ import { Gallery } from "@/components/Gallery";
 import { InvitationEntryGate } from "@/components/InvitationEntryGate";
 import { RsvpForm } from "@/components/RsvpForm";
 import { getGuestBySlug, type Guest } from "@/lib/guestService";
+import { GiftsSection } from "@/components/GiftsSection";
 import styles from "./page.module.css";
 
 interface InvitationPageProps {
@@ -156,6 +157,8 @@ export default async function InvitationPage({ params }: InvitationPageProps) {
           </section>
 
           <Gallery />
+
+          <GiftsSection />
 
           <section className={styles.rsvp} data-reveal>
             <h2>Confirma tu asistencia</h2>

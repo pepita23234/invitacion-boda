@@ -1,0 +1,268 @@
+/* === Gifts Section === */
+.gifts {
+  text-align: center;
+  padding: clamp(1.6rem, 3.5vw, 2.6rem);
+  background: rgba(255, 253, 248, 0.97);
+  border: 1px solid rgba(90, 124, 90, 0.13);
+  border-radius: 24px;
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.85) inset,
+    0 24px 52px -16px rgba(36, 52, 36, 0.09);
+  position: relative;
+  overflow: hidden;
+}
+
+.gifts::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.giftIcon {
+  font-size: 2.4rem;
+  margin-bottom: 0.4rem;
+  line-height: 1;
+}
+
+.title {
+  margin: 0 0 0.3rem;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 600;
+  color: #2D4A3E;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* Ornamental line */
+.ornamentalLine {
+  width: min(200px, 60%);
+  height: 20px;
+  margin: 0.5rem auto 1.2rem;
+  position: relative;
+  background:
+    radial-gradient(circle at center, rgba(197, 160, 96, 0.95) 0 3px, transparent 4px),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 0 6px, transparent 7px);
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: lineGlow 5s ease-in-out infinite;
+}
+
+.ornamentalLine::before,
+.ornamentalLine::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  width: 44%;
+  height: 1px;
+}
+
+.ornamentalLine::before {
+  left: 0;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 96, 0.6));
+}
+
+.ornamentalLine::after {
+  right: 0;
+  background: linear-gradient(90deg, rgba(197, 160, 96, 0.6), transparent);
+}
+
+.subtitle {
+  margin: 0 0 1.6rem;
+  font-size: 0.98rem;
+  color: #4A4039;
+  line-height: 1.55;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.85rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Solid button */
+.btn {
+  padding: 0.85rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  border: none;
+  background: linear-gradient(135deg, #4E7260 0%, #2D4A3E 100%);
+  color: #fff;
+  box-shadow: 0 8px 28px -8px rgba(36, 74, 54, 0.38);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -8px rgba(36, 74, 54, 0.46);
+}
+
+/* Outline variant */
+.btnOutline {
+  background: transparent;
+  color: #2D4A3E;
+  border: 2px solid rgba(78, 114, 96, 0.55);
+  box-shadow: none;
+}
+
+.btnOutline:hover {
+  background: rgba(78, 114, 96, 0.07);
+  border-color: #4E7260;
+  box-shadow: none;
+}
+
+/* === Modal === */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 24, 18, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 1rem;
+  animation: fadeIn 0.18s ease;
+}
+
+.modal {
+  background: linear-gradient(150deg, #FDFAF4 0%, #F5EDD9 100%);
+  border: 1px solid rgba(90, 124, 90, 0.14);
+  border-radius: 24px;
+  padding: clamp(1.8rem, 5vw, 2.8rem) clamp(1.6rem, 5vw, 2.8rem);
+  width: min(420px, 92vw);
+  position: relative;
+  box-shadow: 0 32px 64px -16px rgba(30, 24, 18, 0.28);
+  animation: scaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1.1rem;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #7FA280;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  transition: color 0.15s;
+}
+
+.closeBtn:hover {
+  color: #2D4A3E;
+}
+
+.modalIcon {
+  font-size: 2.6rem;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.modalTitle {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 600;
+  color: #2D4A3E;
+  margin: 0 0 0.4rem;
+}
+
+.modalDivider {
+  width: min(120px, 50%);
+  height: 2px;
+  margin: 0 auto 1.4rem;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 96, 0.7), transparent);
+  border-radius: 999px;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.modalLabel {
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7FA280;
+  margin: 0;
+}
+
+.accountBox {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: rgba(78, 114, 96, 0.08);
+  border: 1px solid rgba(78, 114, 96, 0.18);
+  border-radius: 14px;
+  padding: 0.7rem 1.1rem;
+}
+
+.accountNumber {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #2D4A3E;
+  letter-spacing: 0.06em;
+}
+
+.copyBtn {
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  background: transparent;
+  color:  #4E7260;
+  border: 1.5px solid rgba(78, 114, 96, 0.5);
+  transition: background 0.18s, color 0.18s;
+}
+
+.copyBtn:hover {
+  background: #4E7260;
+  color: #fff;
+}
+
+.modalHint {
+  font-size: 0.88rem;
+  color: #554b43;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* === Keyframes === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes lineGlow {
+  0%, 100% { filter: saturate(1); }
+  50%       { filter: saturate(1.4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ornamentalLine { animation: none; }
+  .btn { transition: none; }
+  .overlay { animation: none; }
+  .modal { animation: none; }
+}
