@@ -47,13 +47,13 @@ export function GiftsSection() {
               ×
             </button>
 
-            <h3 id="modal-title" className={styles.modalTitle}>Lluvias de Sobres</h3>
+            <h3 id="modal-title" className={styles.modalTitle}>Lluvia de Sobres</h3>
             <div className={styles.modalDivider} />
 
             {open === "cuenta" && (
               <div className={styles.modalBody}>
                 <p className={styles.modalHint}>
-                  Aquí puedes enviarme tus lluvias de sobres
+                  Aquí puedes enviarme tu lluvia de sobres
                 </p>
 
                 <p className={styles.modalLabel}>Cuenta Nequi</p>
@@ -91,7 +91,7 @@ export function GiftsSection() {
     <>
       <section className={styles.gifts} data-reveal>
         <div className={styles.giftIcon}></div>
-        <h2 className={styles.title}>Lluvias de Sobres</h2>
+        <h2 className={styles.title}>Lluvia de Sobres</h2>
         <div className={styles.ornamentalLine} />
         <p className={styles.subtitle}>
           Si deseas regalarnos algo más que tu hermosa presencia…
